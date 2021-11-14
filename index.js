@@ -13,16 +13,24 @@ function startGame() {
 }
 
 function setWord() {
-  const word = words[0];
+  const word = words[3];
   const wordArr = word.split('');
   wordArr.forEach(letter => {
     const p = document.createElement('p');
+    p.classList.add(letter);
     wordContainer.appendChild(p);
   })
 }
 
-function checkLetter() {
-  
+function checkLetter(event) {
+  const letter = event.key;
+  const letterElArr = document.querySelectorAll(`.${letter}`);
+  if (letterElArr.length) {
+    letterElArr.forEach(el => {
+      const textNode = document.createTextNode(letter);
+      el.appendChild(textNode);
+    })
+  }
 }
 
-startGame();
+// startGame();
