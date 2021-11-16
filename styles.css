@@ -17,9 +17,16 @@ main {
   display: none;
 }
 
+#guessesContainer {
+  position: absolute;
+  top: 75px;
+}
+
 #word-container {
-  width: 100%;
+  position: absolute;
   display: flex;
+  width: 100%;
+  height: 75px;
   justify-content: space-evenly;
 }
 
@@ -28,4 +35,10 @@ p {
   font-size: 10vw;
   text-align: center;
   border-bottom: 1px solid black;
+}
+
+#game-over {
+  position: absolute;
+  top: 50px;
+  font-size: 10vw;
 }
