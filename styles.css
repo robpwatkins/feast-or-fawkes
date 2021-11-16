@@ -30,11 +30,15 @@ main {
   justify-content: space-evenly;
 }
 
-p {
-  width: 100px;
+.text {
+  width: 5vw;
   font-size: 10vw;
   text-align: center;
   border-bottom: 1px solid black;
+}
+
+.space {
+  border-bottom: none;
 }
 
 #game-over {

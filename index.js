@@ -18,12 +18,18 @@ function startGame() {
   setTimeout(() => window.addEventListener('keyup', handleKeyup), 100);
 };
 
+startGame()
+
 function setWord() {
   const word = words[3];
   wordArr = word.split('');
   wordArr.forEach(letter => {
     const p = document.createElement('p');
-    p.classList.add(letter);
+    if (letter === ' ') {
+      letter = '_'
+      p.classList.add('space', 'text');
+    }
+    p.classList.add(letter, 'text');
     wordContainer.appendChild(p);
   })
 };
