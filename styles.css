@@ -17,7 +17,7 @@ main {
   display: none;
 }
 
-#guessesContainer {
+#guesses-container {
   position: absolute;
   top: 75px;
 }
@@ -30,18 +30,19 @@ main {
   justify-content: space-evenly;
 }
 
-.text {
+.word {
+  display: flex;
+}
+
+.letter {
   width: 5vw;
+  margin: 5px;
   font-size: 10vw;
   text-align: center;
   border-bottom: 1px solid black;
 }
 
-.space {
-  border-bottom: none;
-}
-
-#game-over {
+#win, #game-over {
   position: absolute;
   top: 50px;
   font-size: 10vw;
