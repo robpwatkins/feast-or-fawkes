@@ -34,18 +34,16 @@ function setWord() {
   })
 };
 
-function handleKeyup(event) {
-  const letter = event.key;
-  if (!lettersArr.includes(letter)) return handleWrongGuess();
-  const letterElArr = document.querySelectorAll(`.${letter}`);
+function handleKeyup({ key }) {
+  if (!lettersArr.includes(key)) return handleWrongGuess();
+  const letterElArr = document.querySelectorAll(`.${key}`);
   letterElArr.forEach(el => {
     if (!el.innerHTML) {
-      const textNode = document.createTextNode(letter);
+      const textNode = document.createTextNode(key);
       el.appendChild(textNode);
-      correctGuessesArr.push(letter);
-    } else return console.log(`You already guessed '${letter}'!`);
+      correctGuessesArr.push(key);
+    } else return console.log(`You already guessed '${key}'!`);
   })
-  console.log(correctGuessesArr, lettersArr);
   if (correctGuessesArr.length == lettersArr.length) return handleWin();
 };
 
