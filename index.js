@@ -16,11 +16,13 @@ function startGame() {
   subtitle.classList.add('hidden');
   guessesContainer.classList.remove('hidden');
   setWord();
-  setTimeout(() => window.addEventListener('keyup', handleKeyup), 100);
+  setTimeout(() => window.addEventListener('keyup', handleKeyup), 500);
 };
 
+// startGame();
+
 function setWord() {
-  const word = words[3];
+  const word = words[79];
   lettersArr = word.replace(/ /g, '').split('');
   word.split(' ').forEach(word => {
     const div = document.createElement('div');
@@ -34,8 +36,13 @@ function setWord() {
   })
 };
 
-function handleKeyup({ key }) {
-  if (!lettersArr.includes(key)) return handleWrongGuess();
+function handleKeyup(event) {
+  const { key } = event;
+  if (!lettersArr.includes(key)) {
+    guessesLeft--;
+    guesses.innerHTML = guessesLeft;
+    if (guessesLeft == 0) return handleLose();
+  }
   const letterElArr = document.querySelectorAll(`.${key}`);
   letterElArr.forEach(el => {
     if (!el.innerHTML) {
@@ -45,12 +52,6 @@ function handleKeyup({ key }) {
     } else return console.log(`You already guessed '${key}'!`);
   })
   if (correctGuessesArr.length == lettersArr.length) return handleWin();
-};
-
-function handleWrongGuess() {
-  guessesLeft--;
-  guesses.innerHTML = guessesLeft;
-  if (guessesLeft == 0) return handleLose();
 };
 
 function handleWin() {

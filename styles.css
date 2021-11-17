@@ -26,7 +26,8 @@ main {
   position: absolute;
   display: flex;
   width: 100%;
-  height: 75px;
+  bottom: 75vh;
+  /* height: 7vh; */
   justify-content: space-evenly;
 }
 
@@ -36,14 +37,14 @@ main {
 
 .letter {
   width: 5vw;
-  margin: 5px;
-  font-size: 10vw;
+  margin: .5vw;
+  font-size: 7vw;
   text-align: center;
   border-bottom: 1px solid black;
 }
 
 #win, #game-over {
   position: absolute;
-  top: 50px;
+  top: 40vh;
   font-size: 10vw;
 }
