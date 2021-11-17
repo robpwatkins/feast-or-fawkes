@@ -4,17 +4,24 @@ const subtitle = document.querySelector('#subtitle');
 const wordContainer = document.querySelector('#word-container');
 const guessesContainer = document.querySelector('#guesses-container');
 const guesses = document.querySelector('#guesses');
+const fawkes = document.querySelector('#fawkes');
+const feast = document.querySelector('#feast');
+const human = document.querySelector('#human');
 const win = document.querySelector('#win');
 const gameOver = document.querySelector('#game-over');
 let lettersArr;
 let correctGuessesArr = [];
-let guessesLeft = 5;
+let guessesLeft = 6;
+let fawkesPosition = 0;
+let humanPosition = 90;
 window.addEventListener('keydown', startGame, { once: true });
 
 function startGame() {
   title.classList.add('hidden');
   subtitle.classList.add('hidden');
-  guessesContainer.classList.remove('hidden');
+  fawkes.classList.remove('hidden');
+  feast.classList.remove('hidden');
+  human.classList.remove('hidden');
   setWord();
   setTimeout(() => window.addEventListener('keyup', handleKeyup), 500);
 };
@@ -38,12 +45,21 @@ function setWord() {
 
 function handleKeyup(event) {
   const { key } = event;
-  if (!lettersArr.includes(key)) {
-    guessesLeft--;
-    guesses.innerHTML = guessesLeft;
-    if (guessesLeft == 0) return handleLose();
-  }
+  if (!lettersArr.includes(key)) return handleIncorrectGuess(key);
+  handleCorrectGuess(key);
+};
+
+function handleIncorrectGuess(key) {
+  guessesLeft--;
+  fawkesPosition += 5;
+  fawkes.style.left = `${fawkesPosition}vw`;
+  if (guessesLeft == 0) return handleLose();
+};
+
+function handleCorrectGuess(key) {
   const letterElArr = document.querySelectorAll(`.${key}`);
+  humanPosition -= 5;
+  human.style.left = `${humanPosition}vw`;
   letterElArr.forEach(el => {
     if (!el.innerHTML) {
       const textNode = document.createTextNode(key);
@@ -52,7 +68,7 @@ function handleKeyup(event) {
     } else return console.log(`You already guessed '${key}'!`);
   })
   if (correctGuessesArr.length == lettersArr.length) return handleWin();
-};
+}
 
 function handleWin() {
   guessesContainer.classList.add('hidden');
