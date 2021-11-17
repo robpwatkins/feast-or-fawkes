@@ -13,6 +13,10 @@ main {
   align-items: center;
 }
 
+button {
+  padding: 2px;
+}
+
 .hidden {
   display: none;
 }
