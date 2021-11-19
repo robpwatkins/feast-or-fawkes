@@ -11,6 +11,8 @@ main {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  color: #855425;
+  background-color: #FFE899;
 }
 
 button {
@@ -43,7 +45,8 @@ button {
   margin: .5vw;
   font-size: 7vw;
   text-align: center;
-  border-bottom: 1px solid black;
+  color: #FFFFFF;
+  border-bottom: 2px solid #855425;
 }
 
 #win, #game-over {
@@ -52,28 +55,46 @@ button {
   font-size: 10vw;
 }
 
+.string {
+  width: 75vw; 
+  height: 100vh;
+  border: solid 5px #7E5950;
+  border-color: #7E5950 transparent transparent transparent;
+  border-radius: 50%/100px 100px 0 0;
+  transform: rotate(180deg);
+  /* border-bottom: 3px solid #7E5950; */
+}
+
 .animation {
   position: absolute;
   bottom: 5vh;
   text-align: center;
+  transition: transform .5s;
 }
 
 #fawkes {
   left: 0vw;
-  width: 10vw;
+  width: 12vw;
   height: 250px;
   border: 1px solid black;
+  transform: translateX(0vw);
 }
 
 #feast {
-  width: 25vw;
-  height: 200px;
-  border: 1px solid black;
+  /* bottom: 0vh; */
+  width: 40vw;
+  /* height: 200px; */
+  /* border: 1px solid black; */
 }
+
+/* #feast > img {
+  width: 30vw;
+} */
 
 #human {
   left: 90vw;
   width: 10vw;
   height: 400px;
   border: 1px solid black;
+  transform: translateX(0vw);
 }

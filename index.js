@@ -13,9 +13,10 @@ const gameOver = document.querySelector('#game-over');
 let lettersArr;
 let correctGuessesArr = [];
 let incorrectGuessesArr = [];
-let guessesLeft = 6;
+let guessesLeft = 7;
 let fawkesPosition = 0;
-let humanPosition = 90;
+let humanPosition = 0;
+let humanSteps;
 button.addEventListener('click', startGame);
 // window.addEventListener('keydown', startGame, { once: true });
 
@@ -32,7 +33,8 @@ function startGame() {
 // startGame();
 
 function setWord() {
-  const word = words[79];
+  const word = words[11];
+  humanSteps = 30 / word.length;
   lettersArr = word.replace(/ /g, '').split('');
   word.split(' ').forEach(word => {
     const div = document.createElement('div');
@@ -55,8 +57,8 @@ function handleKeyup(event) {
 function handleIncorrectGuess(key) {
   if (incorrectGuessesArr.includes(key)) return console.log(`You already guessed '${key}'!`);
   guessesLeft--;
-  fawkesPosition += 5;
-  fawkes.style.left = `${fawkesPosition}vw`;
+  fawkesPosition += 3;
+  fawkes.style.transform = `translateX(${fawkesPosition}vw)`;
   incorrectGuessesArr.push(key);
   if (guessesLeft == 0) return handleLose();
 };
@@ -64,8 +66,8 @@ function handleIncorrectGuess(key) {
 function handleCorrectGuess(key) {
   if (correctGuessesArr.includes(key)) return console.log(`You already guessed '${key}'!`);
   const letterElArr = document.querySelectorAll(`.${key}`);
-  humanPosition -= 5;
-  human.style.left = `${humanPosition}vw`;
+  humanPosition -= humanSteps;
+  human.style.transform = `translateX(${humanPosition}vw)`;
   letterElArr.forEach(el => {
     const textNode = document.createTextNode(key);
     el.appendChild(textNode);
