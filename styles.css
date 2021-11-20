@@ -12,7 +12,7 @@ main {
   justify-content: center;
   align-items: center;
   color: #855425;
-  background-color: #FFE899;
+  background-color: #ffa433;
 }
 
 button {
@@ -46,13 +46,14 @@ button {
   font-size: 7vw;
   text-align: center;
   color: #FFFFFF;
+  text-shadow: 2px 2px 2px #855425;
   border-bottom: 2px solid #855425;
 }
 
 #win, #game-over {
   position: absolute;
   top: 40vh;
-  font-size: 10vw;
+  /* font-size: 10vw; */
 }
 
 .string {
@@ -73,15 +74,17 @@ button {
 }
 
 #fawkes {
-  left: 0vw;
-  width: 12vw;
-  height: 250px;
-  border: 1px solid black;
+  left: .5vw;
+  width: 14vw;
+  height: auto;
+  z-index: 1;
+  /* border: 1px solid black; */
   transform: translateX(0vw);
 }
 
 #feast {
   /* bottom: 0vh; */
+  z-index: 0;
   width: 40vw;
   /* height: 200px; */
   /* border: 1px solid black; */
@@ -95,6 +98,7 @@ button {
   left: 90vw;
   width: 10vw;
   height: 400px;
+  z-index: 1;
   border: 1px solid black;
   transform: translateX(0vw);
 }

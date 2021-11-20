@@ -10,7 +10,9 @@ const feast = document.querySelector('#feast');
 const human = document.querySelector('#human');
 const win = document.querySelector('#win');
 const gameOver = document.querySelector('#game-over');
+let lettersObj = {};
 let lettersArr;
+// let totalCorrectGuesses;
 let correctGuessesArr = [];
 let incorrectGuessesArr = [];
 let guessesLeft = 7;
@@ -30,22 +32,24 @@ function startGame() {
   setTimeout(() => window.addEventListener('keyup', handleKeyup), 500);
 };
 
-// startGame();
+startGame();
 
 function setWord() {
-  const word = words[11];
-  humanSteps = 30 / word.length;
+  const word = words[12];
   lettersArr = word.replace(/ /g, '').split('');
   word.split(' ').forEach(word => {
     const div = document.createElement('div');
     div.classList.add('word');
     wordContainer.appendChild(div);
     word.split('').forEach(letter => {
+      if (lettersObj[letter]) lettersObj[letter]++;
+      else lettersObj[letter] = 1;
       const p = document.createElement('p');
       p.classList.add(letter, 'letter');
       div.appendChild(p);
     })
   })
+  humanSteps = 22 / (Object.keys(lettersObj).length);
 };
 
 function handleKeyup(event) {
@@ -57,7 +61,7 @@ function handleKeyup(event) {
 function handleIncorrectGuess(key) {
   if (incorrectGuessesArr.includes(key)) return console.log(`You already guessed '${key}'!`);
   guessesLeft--;
-  fawkesPosition += 3;
+  fawkesPosition += 2.75;
   fawkes.style.transform = `translateX(${fawkesPosition}vw)`;
   incorrectGuessesArr.push(key);
   if (guessesLeft == 0) return handleLose();
