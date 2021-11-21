@@ -13,7 +13,15 @@ main {
   align-items: center;
   font-family: 'Balsamiq Sans', cursive;
   color: #855425;
-  background-color: #ffa433;
+  background: 
+    radial-gradient(#c76a0d3a 3px, transparent 4px),
+    radial-gradient(#c76a0d3a 3px, transparent 4px),
+    linear-gradient(#ffa433 4px, transparent 0),
+    linear-gradient(45deg, transparent 74px, transparent 75px, #c76a0d3a 75px, #c76a0d3a 76px, transparent 77px, transparent 109px),
+    linear-gradient(-45deg, transparent 75px, transparent 76px, #c76a0d3a 76px, #c76a0d3a 77px, transparent 78px, transparent 109px),
+  #ffa433;
+  background-size: 109px 109px, 109px 109px,100% 6px, 109px 109px, 109px 109px;
+  background-position: 54px 55px, 0px 0px, 0px 0px, 0px 0px, 0px 0px;
 }
 
 #title {
@@ -25,6 +33,7 @@ main {
 
 #title-flags {
   width: 60vw;
+  filter: drop-shadow(0.35rem 0.35rem 0.4rem rgba(0, 0, 0, 0.295));
 }
 
 #or {
@@ -67,10 +76,6 @@ button:focus {
     outline-offset: -4px;
 }
 
-button:active {
-    /* transform: scale(0.99); */
-}
-
 .hidden {
   display: none;
 }
@@ -93,13 +98,15 @@ button:active {
 }
 
 .letter {
-  width: 5vw;
+  width: 6vw;
+  height: 15px;
   margin: .5vw;
   font-size: 7vw;
   text-align: center;
-  color: #FFFFFF;
-  text-shadow: 2px 2px 2px #855425;
-  border-bottom: 2px solid #855425;
+  color: ghostwhite;
+  text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.404);
+  border-bottom: 2px solid ghostwhite;
+  box-shadow: 0 4px 2px -2px rgba(0, 0, 0, 0.295);
 }
 
 #win, #game-over {

@@ -32,7 +32,7 @@ function startGame() {
   setTimeout(() => window.addEventListener('keyup', handleKeyup), 500);
 };
 
-// startGame();
+startGame();
 
 function setWord() {
   const word = words[12];
@@ -45,7 +45,7 @@ function setWord() {
       if (lettersObj[letter]) lettersObj[letter]++;
       else lettersObj[letter] = 1;
       const p = document.createElement('p');
-      p.classList.add(letter, 'letter');
+      p.classList.add(letter, 'letter', 'blank');
       div.appendChild(p);
     })
   })
@@ -68,6 +68,7 @@ function handleIncorrectGuess(key) {
 };
 
 function handleCorrectGuess(key) {
+  if (!correctGuessesArr.length) document.querySelectorAll('.letter').forEach(el => el.style.height = 'auto');
   if (correctGuessesArr.includes(key)) return console.log(`You already guessed '${key}'!`);
   const letterElArr = document.querySelectorAll(`.${key}`);
   humanPosition -= humanSteps;
