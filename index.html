@@ -5,11 +5,17 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="/styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Balsamiq+Sans&display=swap" rel="stylesheet">
   <title>Feast or Fawkes</title>
 </head>
 <body>
   <main>
-    <h1 id="title">Feast or Fawkes</h1>
+    <div id="title">
+      <img id="title-flags" src="./img/title-flags.png" alt="">
+      <!-- <h4 id="or">or</h4> -->
+    </div>
     <button>CLICK TO PLAY</button>
     <div id="guesses-container" class="hidden">
       <!-- <span>Guesses left: </span><span id="guesses">5</span> -->
@@ -18,7 +24,7 @@
     <div id="win" class="hidden">You win!</div>
     <div id="game-over" class="hidden">Game over!</div>
     <img id="fawkes" class="hidden animation" src="./img/Fawkes Body.png"></>
-    <img id="feast" class="hidden animation" src="./img/feast-with-flags.png" alt="">
+    <img id="feast" class="hidden animation" src="./img/feast.png" alt="">
     <div id="human" class="hidden animation">human</div>
   </main>
   <script type="module" src="/index.js"></script>

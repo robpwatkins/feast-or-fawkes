@@ -32,7 +32,7 @@ function startGame() {
   setTimeout(() => window.addEventListener('keyup', handleKeyup), 500);
 };
 
-startGame();
+// startGame();
 
 function setWord() {
   const word = words[12];

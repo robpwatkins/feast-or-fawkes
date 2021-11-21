@@ -9,14 +9,66 @@ main {
   height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-betweet;
   align-items: center;
+  font-family: 'Balsamiq Sans', cursive;
   color: #855425;
   background-color: #ffa433;
 }
 
+#title {
+  position: relative;
+  /* display: flex; */
+  /* justify-content: center; */
+  /* align-items: center; */
+}
+
+#title-flags {
+  width: 60vw;
+}
+
+#or {
+  position: fixed;
+  margin-top: 60px;
+  font-size: 3rem;
+}
+
 button {
-  padding: 2px;
+    display: inline-block;
+    border: none;
+    padding: .75rem .75rem;
+    margin: 0;
+    text-decoration: none;
+    background: #A42F34;
+    color: #ffffff;
+    font-family: sans-serif;
+    font-size: 1rem;
+    cursor: pointer;
+    text-align: center;
+    /* border: 1px solid #ffa433; */
+    border: 2px solid #A42F34;
+    border-radius: 12px;
+    /* border: 2px solid #A42F34; */
+    transition: background 150ms ease-in-out, 
+                transform 150ms ease;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+
+button:hover,
+button:focus {
+    background: white;
+    color: #A42F34;
+    border: 2px solid #A42F34;
+}
+
+button:focus {
+    outline: 1px solid #fff;
+    outline-offset: -4px;
+}
+
+button:active {
+    /* transform: scale(0.99); */
 }
 
 .hidden {
@@ -78,6 +130,7 @@ button {
   width: 14vw;
   height: auto;
   z-index: 1;
+  filter: drop-shadow(0.35rem 0.35rem 0.4rem rgba(0, 0, 0, 0.295));
   /* border: 1px solid black; */
   transform: translateX(0vw);
 }
