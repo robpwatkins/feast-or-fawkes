@@ -3,6 +3,7 @@ const title = document.querySelector('#title');
 const subtitle = document.querySelector('#subtitle');
 const button = document.querySelector('button');
 const wordContainer = document.querySelector('#word-container');
+const guessesAndFeast = document.getElementById('guesses-and-feast-container');
 const guessesContainer = document.querySelector('#guesses-container');
 const incorrectGuesses = document.getElementById('incorrect-guesses');
 const incorrectLetters = document.getElementById('incorrect-letters');
@@ -33,6 +34,7 @@ function startGame() {
   title.classList.add('hidden');
   button.classList.add('hidden');
   fawkes.classList.remove('hidden');
+  guessesAndFeast.classList.remove('hidden');
   incorrectGuesses.classList.remove('hidden');
   feast.classList.remove('hidden');
   setWord();
