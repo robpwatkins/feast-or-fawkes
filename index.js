@@ -1,9 +1,7 @@
 import { words } from './vocab.js';
 const title = document.querySelector('#title');
-const subtitle = document.querySelector('#subtitle');
 const button = document.querySelector('button');
 const wordContainer = document.querySelector('#word-container');
-const guessesAndFeast = document.getElementById('guesses-and-feast-container');
 const guessesContainer = document.querySelector('#guesses-container');
 const incorrectGuesses = document.getElementById('incorrect-guesses');
 const incorrectLetters = document.getElementById('incorrect-letters');
@@ -14,28 +12,17 @@ const win = document.querySelector('#win');
 const gameOver = document.querySelector('#game-over');
 let lettersObj = {};
 let lettersArr;
-// let totalCorrectGuesses;
 let correctGuessesArr = [];
 let incorrectGuessesArr = [];
 let guessesLeft = 7;
 let fawkesPosition = 0;
-let humanPosition = 0;
-// let humanSteps;
 button.addEventListener('click', startGame);
-// window.addEventListener('keydown', startGame, { once: true });
-
-// function choosePlayer() {
-//   playerSelection.classList.remove('hidden');
-// };
-
-// choosePlayer();
 
 function startGame() {
   title.classList.add('hidden');
   button.classList.add('hidden');
   fawkes.classList.remove('hidden');
-  guessesAndFeast.classList.remove('hidden');
-  incorrectGuesses.classList.remove('hidden');
+  incorrectGuesses.style.display = 'flex';
   feast.classList.remove('hidden');
   setWord();
   setIncorrectGuesses();
@@ -59,7 +46,6 @@ function setWord() {
       div.appendChild(p);
     })
   })
-  // humanSteps = 22 / (Object.keys(lettersObj).length);
 };
 
 function setIncorrectGuesses() {
@@ -98,8 +84,6 @@ function handleCorrectGuess(key) {
   if (!correctGuessesArr.length) document.querySelectorAll('.letter').forEach(el => el.style.height = 'auto');
   if (correctGuessesArr.includes(key)) return console.log(`You already guessed '${key}'!`);
   const letterElArr = document.querySelectorAll(`.${key}`);
-  // humanPosition -= humanSteps;
-  // human.style.transform = `translateX(${humanPosition}vw)`;
   letterElArr.forEach(el => {
     const textNode = document.createTextNode(key);
     el.appendChild(textNode);

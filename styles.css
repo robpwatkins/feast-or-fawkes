@@ -124,18 +124,25 @@ button:focus {
 }
 
 #guesses-and-feast {
-  position: relative;
-  height: 100%;
+  position: absolute;
+  bottom: 5vh;
+  right: 2vw;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+#feast {
+  z-index: 0;
+  width: 45vw;
+  filter: drop-shadow(0.25rem 0.25rem 0.4rem rgba(0, 0, 0, 0.295));
 }
 
 #incorrect-guesses {
   z-index: 1;
   position: absolute;
   top: 47%;
-  display: flex;
+  display: none;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
@@ -146,7 +153,6 @@ button:focus {
 
 #incorrect-letters {
   display: flex;
-  /* height: 6vh; */
   font-size: 3vw;
 }
 
@@ -154,13 +160,5 @@ button:focus {
   width: 2vw;
   margin: 2px;
   text-align: center;
-  /* text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.404); */
   border-bottom: 2px solid ghostwhite;
-  /* box-shadow: 0 5px 3px -3px rgba(0, 0, 0, 0.295); */
-}
-
-#feast {
-  z-index: 0;
-  width: 45vw;
-  filter: drop-shadow(0.25rem 0.25rem 0.4rem rgba(0, 0, 0, 0.295));
 }
