@@ -18,14 +18,20 @@
     </div>
     <button>CLICK TO PLAY</button>
     <div id="guesses-container" class="hidden">
-      <!-- <span>Guesses left: </span><span id="guesses">5</span> -->
     </div>
     <div id="word-container"></div>
+    <img id="fawkes" class="hidden" src="./img/Fawkes Body.png">
+    <div id="guesses-and-feast-container">
+      <div id="guesses-and-feast" class="hidden">
+        <div id="incorrect-guesses" class="hidden">
+          <h4>incorrect guesses:</h4>
+          <div id="incorrect-letters"></div>
+        </div>
+        <img id="feast" class="hidden" src="./img/feast-no-flags.png" alt="">
+      </div>
+    </div>
     <div id="win" class="hidden">You win!</div>
     <div id="game-over" class="hidden">Game over!</div>
-    <img id="fawkes" class="hidden animation" src="./img/Fawkes Body.png"></>
-    <img id="feast" class="hidden animation" src="./img/feast.png" alt="">
-    <div id="human" class="hidden animation">human</div>
   </main>
   <script type="module" src="/index.js"></script>
 </body>

@@ -4,7 +4,8 @@ const subtitle = document.querySelector('#subtitle');
 const button = document.querySelector('button');
 const wordContainer = document.querySelector('#word-container');
 const guessesContainer = document.querySelector('#guesses-container');
-const guesses = document.querySelector('#guesses');
+const incorrectGuesses = document.getElementById('incorrect-guesses');
+const incorrectLetters = document.getElementById('incorrect-letters');
 const fawkes = document.querySelector('#fawkes');
 const feast = document.querySelector('#feast');
 const human = document.querySelector('#human');
@@ -18,21 +19,28 @@ let incorrectGuessesArr = [];
 let guessesLeft = 7;
 let fawkesPosition = 0;
 let humanPosition = 0;
-let humanSteps;
+// let humanSteps;
 button.addEventListener('click', startGame);
 // window.addEventListener('keydown', startGame, { once: true });
+
+// function choosePlayer() {
+//   playerSelection.classList.remove('hidden');
+// };
+
+// choosePlayer();
 
 function startGame() {
   title.classList.add('hidden');
   button.classList.add('hidden');
   fawkes.classList.remove('hidden');
+  incorrectGuesses.classList.remove('hidden');
   feast.classList.remove('hidden');
-  human.classList.remove('hidden');
   setWord();
+  setIncorrectGuesses();
   setTimeout(() => window.addEventListener('keyup', handleKeyup), 500);
 };
 
-startGame();
+// startGame();
 
 function setWord() {
   const word = words[12];
@@ -45,12 +53,24 @@ function setWord() {
       if (lettersObj[letter]) lettersObj[letter]++;
       else lettersObj[letter] = 1;
       const p = document.createElement('p');
-      p.classList.add(letter, 'letter', 'blank');
+      p.classList.add(letter, 'letter');
       div.appendChild(p);
     })
   })
-  humanSteps = 22 / (Object.keys(lettersObj).length);
+  // humanSteps = 22 / (Object.keys(lettersObj).length);
 };
+
+function setIncorrectGuesses() {
+  if (!incorrectGuessesArr.length) {
+    let count = guessesLeft;
+    while (count > 0) {
+      const p = document.createElement('p');
+      p.classList.add('incorrect-letter');
+      incorrectLetters.appendChild(p);
+      count--;
+    }
+  }
+}
 
 function handleKeyup(event) {
   const { key } = event;
@@ -61,7 +81,7 @@ function handleKeyup(event) {
 function handleIncorrectGuess(key) {
   if (incorrectGuessesArr.includes(key)) return console.log(`You already guessed '${key}'!`);
   guessesLeft--;
-  fawkesPosition += 2.75;
+  fawkesPosition += 5;
   fawkes.style.transform = `translateX(${fawkesPosition}vw)`;
   incorrectGuessesArr.push(key);
   if (guessesLeft == 0) return handleLose();
@@ -71,8 +91,8 @@ function handleCorrectGuess(key) {
   if (!correctGuessesArr.length) document.querySelectorAll('.letter').forEach(el => el.style.height = 'auto');
   if (correctGuessesArr.includes(key)) return console.log(`You already guessed '${key}'!`);
   const letterElArr = document.querySelectorAll(`.${key}`);
-  humanPosition -= humanSteps;
-  human.style.transform = `translateX(${humanPosition}vw)`;
+  // humanPosition -= humanSteps;
+  // human.style.transform = `translateX(${humanPosition}vw)`;
   letterElArr.forEach(el => {
     const textNode = document.createTextNode(key);
     el.appendChild(textNode);
