@@ -69,6 +69,10 @@ function setIncorrectGuesses() {
       incorrectLetters.appendChild(p);
       count--;
     }
+  } else {
+    const incorrectLetterEl = document.getElementsByClassName('incorrect-letter')[incorrectGuessesArr.length - 1];
+    const textNode = document.createTextNode(incorrectGuessesArr[incorrectGuessesArr.length - 1]);
+    incorrectLetterEl.appendChild(textNode);
   }
 }
 
@@ -84,6 +88,7 @@ function handleIncorrectGuess(key) {
   fawkesPosition += 5;
   fawkes.style.transform = `translateX(${fawkesPosition}vw)`;
   incorrectGuessesArr.push(key);
+  setIncorrectGuesses();
   if (guessesLeft == 0) return handleLose();
 };
 
