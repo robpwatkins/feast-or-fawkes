@@ -2,10 +2,18 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  overflow: hidden;
+  /* overflow: hidden; */
 }
 
-body {
+main {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  font-family: 'Balsamiq Sans', cursive;
+  color: #855425;
   background: 
     radial-gradient(#F2972A 3px, transparent 3px),
     radial-gradient(#F2972A 3px, transparent 3px),
@@ -15,17 +23,6 @@ body {
   #ffa433;
   background-size: 109px 109px, 109px 109px,100% 6px, 109px 109px, 109px 109px;
   background-position: 54px 55px, 0px 0px, 0px 0px, 0px 0px, 0px 0px;
-}
-
-main {
-  width: 100%;
-  height: 95vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  align-items: center;
-  font-family: 'Balsamiq Sans', cursive;
-  color: #855425;
 }
 
 #title {
@@ -82,7 +79,7 @@ button:focus {
   position: absolute;
   top: -5vh;
   font-size: 1.5vw;
-  transition: transform 1s;
+  transition: transform .75s;
   transform: translateY(0vh);
 }
 
@@ -117,15 +114,42 @@ button:focus {
 }
 
 #fawkes {
+  z-index: 2;
   position: absolute;
   bottom: 5vh;
   left: 2vw;
   width: 20vw;
   height: auto;
-  z-index: 1;
   filter: drop-shadow(0.35rem 0.35rem 0.4rem rgba(0, 0, 0, 0.295));
   transition: transform .5s;
   transform: translateX(0vw);
+}
+
+#fawkes-chomp-1 {
+  z-index: 2;
+  position: absolute;
+  bottom: 5vh;
+  left: 2vw;
+  width: 23.5vw;
+  filter: drop-shadow(0.35rem 0.35rem 0.4rem rgba(0, 0, 0, 0.295));
+}
+
+#fawkes-chomp-2 {
+  z-index: 2;
+  position: absolute;
+  bottom: 5vh;
+  left: 2vw;
+  width: 23.5vw;
+  filter: drop-shadow(0.35rem 0.35rem 0.4rem rgba(0, 0, 0, 0.295));
+}
+
+#fawkes-chomp-3 {
+  z-index: 2;
+  position: absolute;
+  bottom: 5vh;
+  left: 2vw;
+  width: 23.5vw;
+  /* filter: drop-shadow(0.35rem 0.35rem 0.4rem rgba(0, 0, 0, 0.295)); */
 }
 
 /* #guesses-and-feast-container {
@@ -139,14 +163,22 @@ button:focus {
   bottom: 5vh;
   right: 2vw;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+  /* height: 75vh; */
+  /* overflow: hidden; */
 }
 
-#feast {
-  z-index: 0;
+.feast {
+  /* z-index: 0; */
   width: 45vw;
-  filter: drop-shadow(0.25rem 0.25rem 0.4rem rgba(0, 0, 0, 0.295));
+  /* filter: drop-shadow(0.25rem 0.25rem 0.4rem rgba(0, 0, 0, 0.295)); */
+}
+
+.top {
+  /* z-index: 1; */
+  transition: all 1.5s;
 }
 
 #incorrect-guesses {
@@ -157,7 +189,7 @@ button:focus {
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  height: 23%;
+  height: 16%;
   font-size: 1.75vw;
   color: ghostwhite;
 }
