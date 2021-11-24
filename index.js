@@ -1,13 +1,13 @@
 import { words } from './vocab.js';
 const title = document.querySelector('#title');
 const button = document.querySelector('button');
+const instructions = document.getElementById('instructions');
 const wordContainer = document.querySelector('#word-container');
 const guessesContainer = document.querySelector('#guesses-container');
 const incorrectGuesses = document.getElementById('incorrect-guesses');
 const incorrectLetters = document.getElementById('incorrect-letters');
 const fawkes = document.querySelector('#fawkes');
 const feast = document.querySelector('#feast');
-const human = document.querySelector('#human');
 const win = document.querySelector('#win');
 const gameOver = document.querySelector('#game-over');
 let lettersObj = {};
@@ -21,15 +21,20 @@ button.addEventListener('click', startGame);
 function startGame() {
   title.classList.add('hidden');
   button.classList.add('hidden');
+  instructions.style.transform = 'translateY(7vh)';
   fawkes.classList.remove('hidden');
   incorrectGuesses.style.display = 'flex';
   feast.classList.remove('hidden');
+  revealInstructions();
   setWord();
   setIncorrectGuesses();
   setTimeout(() => window.addEventListener('keyup', handleKeyup), 500);
 };
 
 // startGame();
+
+function revealInstructions() {
+}
 
 function setWord() {
   const word = words[12];
@@ -66,6 +71,7 @@ function setIncorrectGuesses() {
 
 function handleKeyup(event) {
   const { key } = event;
+  if (!correctGuessesArr.length && !incorrectGuessesArr.length) instructions.style.transform = 'translateY(-7vh)';
   if (!lettersArr.includes(key)) return handleIncorrectGuess(key);
   handleCorrectGuess(key);
 };
@@ -95,6 +101,7 @@ function handleCorrectGuess(key) {
 function handleWin() {
   guessesContainer.classList.add('hidden');
   win.classList.remove('hidden');
+  fawkes.style.transform = 'scaleX(-1);';
   window.removeEventListener('keyup', handleKeyup);
 };
 
