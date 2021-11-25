@@ -112,6 +112,12 @@ function handleWin() {
 
 function handleLose() {
   // guessesContainer.classList.add('hidden');
+  fawkesChomp();
+  gameOver.classList.remove('hidden');
+  window.removeEventListener('keyup', handleKeyup);
+};
+
+function fawkesChomp() {
   setTimeout(() => {
     console.log('fawkesPosition: ', fawkesPosition);
     fawkes.classList.add('hidden');
@@ -136,22 +142,20 @@ function handleLose() {
   setTimeout(() => {
     fawkesChomp3.classList.add('hidden');
     fawkesChomp1.classList.remove('hidden');
-  }, 3500);
+  }, 4000);
   setTimeout(() => {
     fawkesChomp1.classList.add('hidden');
     fawkes.classList.remove('hidden');
   }, 5000);
-  gameOver.classList.remove('hidden');
-  window.removeEventListener('keyup', handleKeyup);
+}
+
+async function defineWord() {
+  const word = 'cider';
+  const options = {
+
+  }
+  const response = await (await fetch(`https://api.wordnik.com/word.json/${word}/definitions?limit=200&includeRelated=false&useCanonical=false&includeTags=false&api_key=${process.env.WORDNIK_API_KEY}`)).json();
+  console.log('response: ', response);
 };
 
-// async function defineWord() {
-//   const word = 'cider';
-//   const options = {
-
-//   }
-//   const response = await (await fetch(`https://api.wordnik.com/word.json/${word}/definitions?limit=200&includeRelated=false&useCanonical=false&includeTags=false&api_key=${process.env.WORDNIK_API_KEY}`)).json();
-//   console.log('response: ', response);
-// };
-
-// defineWord();
+defineWord();
