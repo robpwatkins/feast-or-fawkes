@@ -1,8 +1,7 @@
 import { words } from './vocab.js';
-
 const title = document.querySelector('#title');
 const button = document.querySelector('button');
-const instructions = document.getElementById('instructions');
+const notifications = document.getElementById('notifications');
 const wordContainer = document.querySelector('#word-container');
 const guessesContainer = document.querySelector('#guesses-container');
 const incorrectGuesses = document.getElementById('incorrect-guesses');
@@ -15,6 +14,7 @@ const guessesAndFeast = document.getElementById('guesses-and-feast');
 const feastTop = document.querySelector('#feast-top');
 const feastBottom = document.querySelector('#feast-bottom');
 const win = document.querySelector('#win');
+const definitionDiv = document.getElementById('definition');
 const gameOver = document.querySelector('#game-over');
 let word;
 let lettersObj = {};
@@ -28,7 +28,7 @@ button.addEventListener('click', startGame);
 function startGame() {
   title.classList.add('hidden');
   button.classList.add('hidden');
-  instructions.style.transform = 'translateY(7vh)';
+  notifications.style.transform = 'translateY(7vh)';
   fawkes.classList.remove('hidden');
   incorrectGuesses.style.display = 'flex';
   feastTop.classList.remove('hidden');
@@ -41,7 +41,7 @@ function startGame() {
 // startGame();
 
 function setWord() {
-  word = words[12];
+  [word] = words.splice(Math.floor(Math.random() * words.length), 1);
   lettersArr = word.replace(/ /g, '').split('');
   word.split(' ').forEach(word => {
     const div = document.createElement('div');
@@ -75,7 +75,7 @@ function setIncorrectGuesses() {
 
 function handleKeyup(event) {
   const { key } = event;
-  if (!correctGuessesArr.length && !incorrectGuessesArr.length) instructions.style.transform = 'translateY(-7vh)';
+  if (!correctGuessesArr.length && !incorrectGuessesArr.length) notifications.style.transform = 'translateY(-7vh)';
   if (!lettersArr.includes(key)) return handleIncorrectGuess(key);
   handleCorrectGuess(key);
 };
@@ -103,9 +103,11 @@ function handleCorrectGuess(key) {
 }
 
 function handleWin() {
-  guessesContainer.classList.add('hidden');
-  win.classList.remove('hidden');
-  // defineWord();
+  notifications.style.transition = 'transform .15s';
+  notifications.innerHTML = 'YOU WIN!!!';
+  notifications.style.transform = 'translateY(7vh)';
+  defineWord();
+  
   window.removeEventListener('keyup', handleKeyup);
 };
 
@@ -139,7 +141,7 @@ function fawkesChomp() {
     feastTop.style.transform = 'rotate(-32deg) translateY(-7vw)';
   }, 1500);
   setTimeout(() => feastTop.style.transform = 'rotate(-25deg) translateY(-7vw) translateX(-55vw)', 3000);
-  setTimeout(() => guessesAndFeast.style.overflow = 'hidden', 3000);
+  setTimeout(() => guessesAndFeast.style.overflow = 'hidden', 3250);
   setTimeout(() => {
     fawkesChomp3.classList.add('hidden');
     fawkesChomp1.classList.remove('hidden');
@@ -151,10 +153,15 @@ function fawkesChomp() {
 }
 
 async function defineWord() {
-  const word = 'cider';
   const response = await (await fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${word}`)).json();
-  const definition = response[0].meanings[0].definitions[0].definition;
-  console.log(definition);
+  const [{ partOfSpeech }] = response[0].meanings;
+  const [{ definition }] = response[0].meanings[0].definitions;
+  const definitionEl = `
+    <div>
+      <p style="font-size: 2vw;">(${partOfSpeech})</p>
+      <p style="font-size: 1.5vw;">${definition}</p>
+    </div>
+  `;
+  definitionDiv.classList.remove('hidden');
+  definitionDiv.innerHTML = definitionEl;
 };
-
-defineWord();

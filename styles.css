@@ -75,11 +75,11 @@ button:focus {
   display: none;
 }
 
-#instructions {
+#notifications {
   position: absolute;
   top: -5vh;
-  font-size: 1.5vw;
-  transition: transform .75s;
+  font-size: 2vw;
+  transition: transform .5s;
   transform: translateY(0vh);
 }
 
@@ -189,7 +189,7 @@ button:focus {
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  height: 16%;
+  height: 22%;
   font-size: 1.75vw;
   color: ghostwhite;
 }
@@ -205,3 +205,8 @@ button:focus {
   text-align: center;
   border-bottom: 2px solid ghostwhite;
 }
+
+#definition {
+  margin-bottom: 30vh;
+}
+
