@@ -1,4 +1,5 @@
 import { words } from './vocab.js';
+
 const title = document.querySelector('#title');
 const button = document.querySelector('button');
 const instructions = document.getElementById('instructions');
@@ -154,7 +155,7 @@ async function defineWord() {
   const options = {
 
   }
-  const response = await (await fetch(`https://api.wordnik.com/word.json/${word}/definitions?limit=200&includeRelated=false&useCanonical=false&includeTags=false&api_key=${process.env.WORDNIK_API_KEY}`)).json();
+  const response = await (await fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/`)).json();
   console.log('response: ', response);
 };
 
