@@ -155,7 +155,7 @@ async function defineWord() {
   const options = {
 
   }
-  const response = await (await fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/`)).json();
+  const response = await (await fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/`, { mode: 'no-cors' })).json();
   console.log('response: ', response);
 };
 
