@@ -13,9 +13,10 @@ const fawkesChomp3 = document.getElementById('fawkes-chomp-3');
 const guessesAndFeast = document.getElementById('guesses-and-feast');
 const feastTop = document.querySelector('#feast-top');
 const feastBottom = document.querySelector('#feast-bottom');
+let replay = false;
 const win = document.querySelector('#win');
 const definitionDiv = document.getElementById('definition');
-const gameOver = document.querySelector('#game-over');
+let gameOver = false;
 let word;
 let lettersObj = {};
 let lettersArr;
@@ -26,14 +27,26 @@ let fawkesPosition = 0;
 button.addEventListener('click', startGame);
 
 function startGame() {
-  title.classList.add('hidden');
-  button.classList.add('hidden');
-  notifications.style.transform = 'translateY(7vh)';
-  fawkes.classList.remove('hidden');
-  incorrectGuesses.style.display = 'flex';
-  feastTop.classList.remove('hidden');
-  feastBottom.classList.remove('hidden');
+  if (!replay) {
+    title.classList.add('hidden');
+    button.classList.add('hidden');
+    notifications.style.transform = 'translateY(7vh)';
+    fawkes.classList.remove('hidden');
+    incorrectGuesses.style.display = 'flex';
+    feastTop.classList.remove('hidden');
+    feastBottom.classList.remove('hidden');
+  }
+  word = '';
+  wordContainer.innerHTML = '';
+  incorrectLetters.innerHTML = '';
+  guessesLeft = 7;
+  fawkesPosition = 0;
+  fawkes.style.transform = `translateX(${fawkesPosition}vw)`;
+  correctGuessesArr = [];
+  incorrectGuessesArr = [];
+  definitionDiv.classList.add('hidden');
   setWord();
+  console.log(word);
   setIncorrectGuesses();
   setTimeout(() => window.addEventListener('keyup', handleKeyup), 500);
 };
@@ -67,7 +80,12 @@ function setIncorrectGuesses() {
       count--;
     }
   } else {
-    const incorrectLetterEl = document.getElementsByClassName('incorrect-letter')[incorrectGuessesArr.length - 1];
+    let incorrectLetterEl = document.getElementsByClassName('incorrect-letter')[incorrectGuessesArr.length - 1];
+    if (!incorrectLetterEl) {
+      incorrectLetterEl = document.createElement('p');
+      incorrectLetterEl.classList.add('incorrect-letter');
+      incorrectLetters.appendChild(incorrectLetterEl);
+    }
     const textNode = document.createTextNode(incorrectGuessesArr[incorrectGuessesArr.length - 1]);
     incorrectLetterEl.appendChild(textNode);
   }
@@ -84,7 +102,7 @@ function handleIncorrectGuess(key) {
   if (incorrectGuessesArr.includes(key)) return console.log(`You already guessed '${key}'!`);
   guessesLeft--;
   fawkesPosition += 5;
-  fawkes.style.transform = `translateX(${fawkesPosition}vw)`;
+  if (!gameOver) fawkes.style.transform = `translateX(${fawkesPosition}vw)`;
   incorrectGuessesArr.push(key);
   setIncorrectGuesses();
   if (guessesLeft == 0) return handleLose();
@@ -104,20 +122,28 @@ function handleCorrectGuess(key) {
 
 function handleWin() {
   notifications.style.transition = 'transform .15s';
-  notifications.innerHTML = 'YOU WIN!!!';
+  notifications.innerHTML = `<span>YOU GUESSED IT!!! </span><span id="play-again"><u>play again</u></span>`;
   notifications.style.transform = 'translateY(7vh)';
   defineWord();
-  
+  replay = true;
+  const playAgain = document.getElementById('play-again');
+  playAgain.addEventListener('click', startGame);
   window.removeEventListener('keyup', handleKeyup);
+  gameOver = false;
 };
 
 // handleLose();
 
 function handleLose() {
   // guessesContainer.classList.add('hidden');
+  notifications.style.transition = 'transform .15s';
+  notifications.innerHTML = 'OH NO!!!';
+  notifications.style.transform = 'translateY(7vh)';
   fawkesChomp();
-  gameOver.classList.remove('hidden');
-  window.removeEventListener('keyup', handleKeyup);
+  gameOver = true;
+  // const keepGuessing = document.getElementById('keep-guessing');
+  // keepGuessing.addEventListener
+  // window.removeEventListener('keyup', handleKeyup);
 };
 
 function fawkesChomp() {

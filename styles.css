@@ -206,7 +206,16 @@ button:focus {
   border-bottom: 2px solid ghostwhite;
 }
 
+#play-again, #keep-guessing {
+  cursor: pointer;
+  color: ghostwhite;
+}
+
+#play-again:hover, #keep-guessing:hover {
+  text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.404);
+}
+
 #definition {
-  margin-bottom: 30vh;
+  margin: 0 15vw 30vh;
 }
 
