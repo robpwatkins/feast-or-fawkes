@@ -36,6 +36,8 @@ function startGame() {
     feastTop.classList.remove('hidden');
     feastBottom.classList.remove('hidden');
   }
+  notifications.style.transition = 'transform: .5s';
+  notifications.style.transform = 'translateY(-7vh)';
   word = '';
   wordContainer.innerHTML = '';
   incorrectLetters.innerHTML = '';
