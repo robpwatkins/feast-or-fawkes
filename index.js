@@ -152,11 +152,9 @@ function fawkesChomp() {
 
 async function defineWord() {
   const word = 'cider';
-  const options = {
-
-  }
-  const response = await (await fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/`, { mode: 'no-cors' })).json();
-  console.log('response: ', response);
+  const response = await (await fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${word}`)).json();
+  const definition = response[0].meanings[0].definitions[0].definition;
+  console.log(definition);
 };
 
 defineWord();
