@@ -136,7 +136,7 @@ function handleCorrectGuess(key) {
 
 function handleWin() {
   notifications.style.transition = 'transform .15s';
-  notifications.innerHTML = `<span>YOU GUESSED IT!!!</span><span id="play-again"><u>play again</u></span>`;
+  notifications.innerHTML = `<p>YOU GUESSED IT!!! </p><p id="play-again"><u>play again</u></p>`;
   notifications.style.transform = 'translateY(7vh)';
   defineWord();
   replay = true;

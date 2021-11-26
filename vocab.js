@@ -40,7 +40,6 @@ export const words = [
   'leftovers',
   'maze',
   'maize',
-  'Mayflower',
   'meal',
   'nap',
   'indiginous peoples',
