@@ -56,7 +56,7 @@ function startGame() {
   // setTimeout(() => window.addEventListener('keyup', handleKeyup), 500);
 };
 
-startGame();
+// startGame();
 
 function setWord() {
   [word] = words.splice(Math.floor(Math.random() * words.length), 1);
@@ -184,7 +184,7 @@ function fawkesChomp() {
     feastTop.style.transform = 'rotate(-32deg) translateY(-7vw)';
   }, 1500);
   setTimeout(() => feastTop.style.transform = 'rotate(-25deg) translateY(-7vw) translateX(-55vw)', 3000);
-  setTimeout(() => guessesAndFeast.style.overflow = 'hidden', 3000);
+  setTimeout(() => guessesAndFeast.style.overflow = 'hidden', 3050);
   setTimeout(() => {
     fawkesChomp3.classList.add('hidden');
     fawkesChomp1.classList.remove('hidden');
