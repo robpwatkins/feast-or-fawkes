@@ -34,7 +34,7 @@ function startGame() {
     incorrectGuesses.style.display = 'flex';
     feastTop.classList.remove('hidden');
     feastBottom.classList.remove('hidden');
-    keyboard.classList.remove('hidden');
+    keyboard.style.display = 'flex';
     setKeyboard();
   }
   notifications.style.transition = 'transform: .5s';

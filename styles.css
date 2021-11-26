@@ -227,7 +227,7 @@ button:focus {
 #keyboard {
   position: absolute;
   bottom: 0;
-  display: flex;
+  /* display: flex; */
   width: 100%;
   height: 8vh;
   background-color: ghostwhite;
@@ -235,7 +235,7 @@ button:focus {
 
 .alpha {
   flex: 1;
-  display:flex;
+  display: flex;
   justify-content: center;
   align-items: center;
   font-size: 3vw;
