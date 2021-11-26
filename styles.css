@@ -116,8 +116,6 @@ button:focus {
 #fawkes {
   z-index: 2;
   position: absolute;
-  bottom: 5vh;
-  left: 2vw;
   width: 20vw;
   height: auto;
   filter: drop-shadow(0.35rem 0.35rem 0.4rem rgba(0, 0, 0, 0.295));
@@ -128,8 +126,6 @@ button:focus {
 #fawkes-chomp-1 {
   z-index: 2;
   position: absolute;
-  bottom: 5vh;
-  left: 2vw;
   width: 23.5vw;
   filter: drop-shadow(0.35rem 0.35rem 0.4rem rgba(0, 0, 0, 0.295));
 }
@@ -137,8 +133,6 @@ button:focus {
 #fawkes-chomp-2 {
   z-index: 2;
   position: absolute;
-  bottom: 5vh;
-  left: 2vw;
   width: 23.5vw;
   filter: drop-shadow(0.35rem 0.35rem 0.4rem rgba(0, 0, 0, 0.295));
 }
@@ -146,10 +140,13 @@ button:focus {
 #fawkes-chomp-3 {
   z-index: 2;
   position: absolute;
-  bottom: 5vh;
-  left: 2vw;
   width: 23.5vw;
   /* filter: drop-shadow(0.35rem 0.35rem 0.4rem rgba(0, 0, 0, 0.295)); */
+}
+
+.fawkes {
+  bottom: 5.5vh;
+  left: 2vw;
 }
 
 /* #guesses-and-feast-container {
@@ -160,7 +157,7 @@ button:focus {
 
 #guesses-and-feast {
   position: absolute;
-  bottom: 5vh;
+  bottom: 6vh;
   right: 2vw;
   display: flex;
   flex-direction: column;
@@ -171,7 +168,7 @@ button:focus {
 }
 
 .feast {
-  /* z-index: 0; */
+  z-index: 1;
   width: 45vw;
   /* filter: drop-shadow(0.25rem 0.25rem 0.4rem rgba(0, 0, 0, 0.295)); */
 }
@@ -219,3 +216,21 @@ button:focus {
   margin: 0 15vw 30vh;
 }
 
+#keyboard {
+  position: absolute;
+  bottom: 0;
+  display: flex;
+  width: 100%;
+  height: 8vh;
+  background-color: ghostwhite;
+}
+
+.alpha {
+  flex: 1;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #ffffff;
+  border: solid #855425;
+  border-width: 2.5vh 1px 2px;
+}

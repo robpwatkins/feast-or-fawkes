@@ -3,6 +3,7 @@ const title = document.querySelector('#title');
 const button = document.querySelector('button');
 const notifications = document.getElementById('notifications');
 const wordContainer = document.querySelector('#word-container');
+const keyboard = document.getElementById('keyboard');
 const guessesContainer = document.querySelector('#guesses-container');
 const incorrectGuesses = document.getElementById('incorrect-guesses');
 const incorrectLetters = document.getElementById('incorrect-letters');
@@ -49,11 +50,12 @@ function startGame() {
   definitionDiv.classList.add('hidden');
   setWord();
   console.log(word);
+  setKeyboard();
   setIncorrectGuesses();
   setTimeout(() => window.addEventListener('keyup', handleKeyup), 500);
 };
 
-// startGame();
+startGame();
 
 function setWord() {
   [word] = words.splice(Math.floor(Math.random() * words.length), 1);
@@ -69,6 +71,16 @@ function setWord() {
       p.classList.add(letter, 'letter');
       div.appendChild(p);
     })
+  })
+};
+
+function setKeyboard() {
+  const alphabet = 'abcdefghijklmnopqrstuvwxyz';
+  alphabet.split('').forEach(alpha => {
+    const p = document.createElement('p');
+    p.classList.add('alpha');
+    p.innerHTML = alpha;
+    keyboard.appendChild(p);
   })
 };
 
