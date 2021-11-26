@@ -44,6 +44,8 @@ function startGame() {
   guessesLeft = 7;
   fawkesPosition = 0;
   fawkes.style.transform = `translateX(${fawkesPosition}vw)`;
+  feastTop.style.transform = 'none';
+  feastTop.style.transition = 'all 1.5s';
   correctGuessesArr = [];
   incorrectGuessesArr = [];
   definitionDiv.classList.add('hidden');
