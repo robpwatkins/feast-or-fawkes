@@ -29,7 +29,7 @@ function startGame() {
   if (!replay) {
     title.classList.add('hidden');
     button.classList.add('hidden');
-    notifications.style.transform = 'translateY(7vh)';
+    notifications.style.transform = 'translateY(5vh)';
     fawkes.classList.remove('hidden');
     incorrectGuesses.style.display = 'flex';
     feastTop.classList.remove('hidden');
@@ -152,7 +152,7 @@ function handleLose() {
   // guessesContainer.classList.add('hidden');
   notifications.style.transition = 'transform .15s';
   notifications.innerHTML = 'OH NO!!!';
-  notifications.style.transform = 'translateY(7vh)';
+  notifications.style.transform = 'translateY(5vh)';
   fawkesChomp();
   gameOver = true;
   // const keepGuessing = document.getElementById('keep-guessing');
