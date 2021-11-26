@@ -4,7 +4,6 @@ const button = document.querySelector('button');
 const notifications = document.getElementById('notifications');
 const wordContainer = document.querySelector('#word-container');
 const keyboard = document.getElementById('keyboard');
-const guessesContainer = document.querySelector('#guesses-container');
 const incorrectGuesses = document.getElementById('incorrect-guesses');
 const incorrectLetters = document.getElementById('incorrect-letters');
 const fawkes = document.querySelector('#fawkes');
@@ -15,7 +14,6 @@ const guessesAndFeast = document.getElementById('guesses-and-feast');
 const feastTop = document.querySelector('#feast-top');
 const feastBottom = document.querySelector('#feast-bottom');
 let replay = false;
-const win = document.querySelector('#win');
 const definitionDiv = document.getElementById('definition');
 let gameOver = false;
 let word;
@@ -36,6 +34,7 @@ function startGame() {
     incorrectGuesses.style.display = 'flex';
     feastTop.classList.remove('hidden');
     feastBottom.classList.remove('hidden');
+    setKeyboard();
   }
   notifications.style.transition = 'transform: .5s';
   notifications.style.transform = 'translateY(-7vh)';
@@ -50,9 +49,8 @@ function startGame() {
   definitionDiv.classList.add('hidden');
   setWord();
   console.log(word);
-  setKeyboard();
   setIncorrectGuesses();
-  setTimeout(() => window.addEventListener('keyup', handleKeyup), 500);
+  // setTimeout(() => window.addEventListener('keyup', handleKeyup), 500);
 };
 
 startGame();
@@ -80,6 +78,7 @@ function setKeyboard() {
     const p = document.createElement('p');
     p.classList.add('alpha');
     p.innerHTML = alpha;
+    p.addEventListener('click', handleKeyPress);
     keyboard.appendChild(p);
   })
 };
@@ -105,12 +104,13 @@ function setIncorrectGuesses() {
   }
 }
 
-function handleKeyup(event) {
-  const { key } = event;
+function handleKeyPress(event) {
+  const { innerHTML: key } = event.target;
   if (!correctGuessesArr.length && !incorrectGuessesArr.length) notifications.style.transform = 'translateY(-7vh)';
   if (!lettersArr.includes(key)) return handleIncorrectGuess(key);
   handleCorrectGuess(key);
 };
+
 
 function handleIncorrectGuess(key) {
   if (incorrectGuessesArr.includes(key)) return console.log(`You already guessed '${key}'!`);
@@ -142,7 +142,7 @@ function handleWin() {
   replay = true;
   const playAgain = document.getElementById('play-again');
   playAgain.addEventListener('click', startGame);
-  window.removeEventListener('keyup', handleKeyup);
+  // window.removeEventListener('keyup', handleKeyup);
   gameOver = false;
 };
 
