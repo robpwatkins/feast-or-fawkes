@@ -209,6 +209,7 @@ button:focus {
 
 #play-again, #keep-guessing {
   /* cursor: pointer; */
+  padding: 1vw;
   color: ghostwhite;
 }
 
