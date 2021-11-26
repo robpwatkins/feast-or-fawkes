@@ -46,6 +46,7 @@ function startGame() {
   fawkes.style.transform = `translateX(${fawkesPosition}vw)`;
   feastTop.style.transform = 'none';
   feastTop.style.transition = 'all 1.5s';
+  guessesAndFeast.style.overflow = 'visible';
   correctGuessesArr = [];
   incorrectGuessesArr = [];
   definitionDiv.classList.add('hidden');
@@ -183,7 +184,7 @@ function fawkesChomp() {
     feastTop.style.transform = 'rotate(-32deg) translateY(-7vw)';
   }, 1500);
   setTimeout(() => feastTop.style.transform = 'rotate(-25deg) translateY(-7vw) translateX(-55vw)', 3000);
-  setTimeout(() => guessesAndFeast.style.overflow = 'hidden', 3250);
+  setTimeout(() => guessesAndFeast.style.overflow = 'hidden', 3150);
   setTimeout(() => {
     fawkesChomp3.classList.add('hidden');
     fawkesChomp1.classList.remove('hidden');
